@@ -34,7 +34,8 @@
 // NOTE: OEMs can avoid the need to maintain/update the defaults.h and cpu_map.h files and use only
 // one configuration file by placing their specific defaults and pin map at the bottom of this file.
 // If doing so, simply comment out these two defines and see instructions below.
-#define DEFAULTS_GENERIC
+// #define DEFAULTS_GENERIC
+#define DEFAULTS_CNC3018
 #define CPU_MAP_ATMEGA328P // Arduino Uno CPU
 
 // Serial baud rate
@@ -612,26 +613,26 @@
 #define RPM_LINE_A4  1.203413e-01  // Used N_PIECES = 4. A and B constants of line 4.
 #define RPM_LINE_B4  1.151360e+03
 
-/* --------------------------------------------------------------------------------------- 
-  This optional dual axis feature is primarily for the homing cycle to locate two sides of 
+/* ---------------------------------------------------------------------------------------
+  This optional dual axis feature is primarily for the homing cycle to locate two sides of
   a dual-motor gantry independently, i.e. self-squaring. This requires an additional limit
   switch for the cloned motor. To self square, both limit switches on the cloned axis must
-  be physically positioned to trigger when the gantry is square. Highly recommend keeping  
+  be physically positioned to trigger when the gantry is square. Highly recommend keeping
   the motors always enabled to ensure the gantry stays square with the $1=255 setting.
 
-  For Grbl on the Arduino Uno, the cloned axis limit switch must to be shared with and 
+  For Grbl on the Arduino Uno, the cloned axis limit switch must to be shared with and
   wired with z-axis limit pin due to the lack of available pins. The homing cycle must home
   the z-axis and cloned axis in different cycles, which is already the default config.
 
   The dual axis feature works by cloning an axis step output onto another pair of step
-  and direction pins. The step pulse and direction of the cloned motor can be set 
+  and direction pins. The step pulse and direction of the cloned motor can be set
   independently of the main axis motor. However to save precious flash and memory, this
-  dual axis feature must share the same settings (step/mm, max speed, acceleration) as the 
+  dual axis feature must share the same settings (step/mm, max speed, acceleration) as the
   parent motor. This is NOT a feature for an independent fourth axis. Only a motor clone.
 
   WARNING: Make sure to test the directions of your dual axis motors! They must be setup
   to move the same direction BEFORE running your first homing cycle or any long motion!
-  Motors moving in opposite directions can cause serious damage to your machine! Use this 
+  Motors moving in opposite directions can cause serious damage to your machine! Use this
   dual axis feature at your own risk.
 */
 // NOTE: This feature requires approximately 400 bytes of flash. Certain configurations can
